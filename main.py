@@ -1,10 +1,12 @@
 import requests
 import sys
+import os
 
 s = requests.session()
 s.headers.update({
-    "Authorization": "Bot nope"
+    "Authorization": f"Bot {os.environ['DISCORD_BOT_TOKEN']}"
 })
+
 
 def get_role_by_name(guild_id, name):
     r = s.get(f"https://discord.com/api/guilds/{guild_id}/roles")
